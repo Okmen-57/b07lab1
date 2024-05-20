@@ -1,43 +1,43 @@
 public class Polynomial {
-    private double[] coefficients;
+    private double[] coef;
 
     public Polynomial() {
-        this.coefficients = new double[]{0};
+        this.coef = new double[]{0};
     }
 
-    public Polynomial(double[] coefficients) {
-        this.coefficients = new double[coefficients.length];
-        for (int i = 0; i < coefficients.length; i++) {
-            this.coefficients[i] = coefficients[i];
+    public Polynomial(double[] coef) {
+        this.coef = new double[coef.length];
+        for (int i = 0; i < coef.length; i++) {
+            this.coef[i] = coef[i];
         }
     }
 
     public Polynomial add(Polynomial other) {
-        int maxLength = Math.max(this.coefficients.length, other.coefficients.length);
-        double[] resultCoefficients = new double[maxLength];
+        int max_len = Math.max(this.coef.length, other.coef.length);
+        double[] resultCoef = new double[max_len];
 
-        for (int i = 0; i < maxLength; i++) {
-            double thisCoeff = 0;
-            if (i < this.coefficients.length) {
-                thisCoeff = this.coefficients[i];
+        for (int i = 0; i < max_len; i++) {
+            double thisC = 0;
+            if (i < this.coef.length) {
+                thisC = this.coef[i];
             }
 
-            double otherCoeff = 0;
-            if (i < other.coefficients.length) {
-                otherCoeff = other.coefficients[i];
+            double otherC = 0;
+            if (i < other.coef.length) {
+                otherC = other.coef[i];
             }
 
-            resultCoefficients[i] = thisCoeff + otherCoeff;
+            resultCoef[i] = thisC + otherC;
         }
 
-        return new Polynomial(resultCoefficients);
+        return new Polynomial(resultCoef);
     }
 
     public double evaluate(double x) {
         double result = 0;
 
-        for (int i = 0; i < coefficients.length; i++) {
-            result += coefficients[i] * Math.pow(x, i);
+        for (int i = 0; i < coef.length; i++) {
+            result += coef[i] * Math.pow(x, i);
         }
 
         return result;
